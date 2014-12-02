@@ -6,6 +6,10 @@
 
 package hello;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -15,47 +19,63 @@ import javax.validation.constraints.Size;
  * @author anantoni
  */
 public class User {
-    
+
+    private Integer userID;
+
+    @NotEmpty
     @Size(min=3, max=40)
     private String username;
 
+    @NotEmpty
+    @Size(min=4, max=40)
+    private String password;
+
+    @NotEmpty
     @Size(min=3, max=40)
     private String firstName;
-    
+
+    @NotEmpty
     @Size(min=3, max=40)
     private String lastName;
-    
+
     @NotNull
     @Min(18)
+    @Max(120)
     private Integer age;
-    
-    @NotNull
+
     @Min(0)
     private Integer credit;
 
-    @NotNull
     @Min(0)
     private Integer currentBalance;
-    
-    @NotNull
-    @Size(min=4, max=40)
-    private String password;
-    
-    @NotNull
+
+    @NotEmpty
     @Size(min=6, max=60)
+    @Email
     private String email;
-    
-    @Size(min=2, max=40)
+
+    @NotEmpty
+    @Size(min=4, max=40)
     private String street;
-    
-    @Size(min=2, max=40)
+
+    @NotEmpty
+    @Size(min=3, max=40)
     private String town;
-    
-    @Size(min=5, max=5)
-    private Integer postCode;
-    
+
     @NotNull
+    @Min(10000)
+    @Max(99999)
+    private Integer postCode;
+
     private Integer locationID;
+
+    public Integer getUserID() {
+        return userID;
+    }
+
+    public void setUserID(Integer userID) {
+        this.userID = userID;
+    }
 
     public String getUsername() {
         return username;
@@ -63,6 +83,14 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getFirstName() {
@@ -103,14 +131,6 @@ public class User {
 
     public void setCurrentBalance(Integer currentBalance) {
         this.currentBalance = currentBalance;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {
@@ -156,5 +176,4 @@ public class User {
     public String toString() {
         return "Person(Name: " + this.firstName + ", Age: " + this.age + ")";
     }
-
 }
