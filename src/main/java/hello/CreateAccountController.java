@@ -11,7 +11,6 @@ import javax.validation.Valid;
 /**
  * Created by anantoni on 2/12/2014.
  */
-
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,5 +40,4 @@ public class CreateAccountController extends WebMvcConfigurerAdapter {
 
         return "redirect:/results";
     }
-
 }
