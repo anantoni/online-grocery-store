@@ -1,1 +1,1 @@
-online-grocery-store
+Online grocery store application using the Spring Framework.
